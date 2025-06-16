@@ -139,24 +139,16 @@ En `appsettings.json`:
 - Abre una terminal en la raíz del proyecto.
 - Ejecuta el siguiente comando para correr las pruebas unitarias:  
 ```bash
-dotnet test .\tests\LogisticsOrders.UnitTests\LogisticsOrders.UnitTests.csproj
+dotnet test .\LogisticsOrders.UnitTests\LogisticsOrders.UnitTests.csproj
 ```
 ### Pruebas de integración
 - Abre una terminal en la raíz del proyecto.
 - Ejecuta el siguiente comando para correr las pruebas de integración:  
 ```bash
-dotnet test .\tests\LogisticsOrders.IntegrationTests\LogisticsOrders.IntegrationTests.csproj
+dotnet test .\LogisticsOrders.IntegrationTests\LogisticsOrders.IntegrationTests.csproj
 ```
 
 - Las pruebas de integración simulan peticiones reales a los endpoints, incluyendo endpoints protegidos y descargas de archivos Excel.
 - Asegúrate de que la base de datos de pruebas esté configurada correctamente o usa la configuración InMemory para pruebas.
-
----
-
-## ℹ️ Notas adicionales
-
-- El archivo `PruebaTecnica10.PublishProfile` contiene la configuración de publicación para Azure y debe usarse en Visual Studio.
-- El proyecto está preparado para despliegue continuo y pruebas automáticas.
-- Consulta el checklist de validación final para asegurar el cumplimiento de todos los requisitos.
 
 ---
