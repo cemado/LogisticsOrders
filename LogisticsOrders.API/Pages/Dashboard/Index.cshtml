@@ -1,0 +1,53 @@
+@page
+@model LogisticsOrders.API.Pages.Dashboard.IndexModel
+@using System.Text.Json
+
+<h2>Dashboard</h2>
+@if (Model.Summary != null)
+{
+    <div class="row">
+        <div class="col">
+            <div class="card text-bg-primary mb-3">
+                <div class="card-header">Órdenes totales</div>
+                <div class="card-body">
+                    <h3 class="card-title">@Model.Summary.TotalOrders</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card text-bg-success mb-3">
+                <div class="card-header">Clientes únicos</div>
+                <div class="card-body">
+                    <h3 class="card-title">@Model.Summary.UniqueClients</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <canvas id="ordersChart" width="400" height="200"></canvas>
+}
+else
+{
+    <div class="alert alert-info">No hay datos para mostrar.</div>
+}
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Datos reales desde el backend
+        var months = @JsonSerializer.Serialize(Model.Months);
+        var ordersPerMonth = @JsonSerializer.Serialize(Model.OrdersPerMonth);
+
+        var ctx = document.getElementById('ordersChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: months,
+                datasets: [{
+                    label: 'Órdenes por mes',
+                    data: ordersPerMonth,
+                    backgroundColor: 'rgba(54, 162, 235, 0.5)'
+                }]
+            }
+        });
+    </script>
+}

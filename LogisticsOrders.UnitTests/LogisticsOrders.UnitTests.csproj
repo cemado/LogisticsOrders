@@ -1,0 +1,55 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" Version="6.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="9.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.6" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
+    <PackageReference Include="Moq" Version="4.20.72" />
+    <PackageReference Include="xunit" Version="2.9.3" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="3.1.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LogisticsOrders.API\LogisticsOrders.API.csproj" />
+    <ProjectReference Include="..\LogisticsOrders.Domain\LogisticsOrders.Domain.csproj" />
+    <ProjectReference Include="..\LogisticsOrders.Application\LogisticsOrders.Application.csproj" />
+    <ProjectReference Include="..\LogisticsOrders.Infrastructure\LogisticsOrders.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="API\Controllers\" />
+    <Folder Include="API\Models\" />
+    <Folder Include="API\Views\Orders\" />
+    <Folder Include="API\Views\Reports\" />
+    <Folder Include="API\wwwroot\" />
+    <Folder Include="Application\Interfaces\" />
+    <Folder Include="Application\Orders\" />
+    <Folder Include="Application\Reports\" />
+    <Folder Include="Domain\Entities\" />
+    <Folder Include="Domain\Interfaces\" />
+    <Folder Include="Domain\Services\" />
+    <Folder Include="Domain\ValueObjects\" />
+    <Folder Include="Infrastructure\Data\" />
+    <Folder Include="Infrastructure\Reports\" />
+    <Folder Include="tests\" />
+  </ItemGroup>
+
+</Project>

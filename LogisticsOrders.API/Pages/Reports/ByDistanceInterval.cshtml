@@ -1,0 +1,39 @@
+@page
+@model LogisticsOrders.API.Pages.Reports.ByDistanceIntervalModel
+
+<h2>Reporte de Órdenes por Intervalo de Distancia</h2>
+
+<form method="get">
+    <button type="submit" formaction="?handler=DownloadExcel" class="btn btn-success mb-2">Descargar Excel</button>
+</form>
+
+@if (Model.Report != null && Model.Report.Any())
+{
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Cliente</th>
+                <th>1-50 km</th>
+                <th>51-200 km</th>
+                <th>201-500 km</th>
+                <th>501-1000 km</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.Report)
+        {
+            <tr>
+                <td>@item.Client</td>
+                <td>@item.Intervals.First(i => i.Interval == "1-50 km").Count</td>
+                <td>@item.Intervals.First(i => i.Interval == "51-200 km").Count</td>
+                <td>@item.Intervals.First(i => i.Interval == "201-500 km").Count</td>
+                <td>@item.Intervals.First(i => i.Interval == "501-1000 km").Count</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-info">No hay datos para mostrar.</div>
+}

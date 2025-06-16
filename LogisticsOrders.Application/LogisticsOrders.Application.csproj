@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\LogisticsOrders.Domain\LogisticsOrders.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="API\Controllers\" />
+    <Folder Include="API\Models\" />
+    <Folder Include="API\wwwroot\" />
+    <Folder Include="API\Views\Reports\" />
+    <Folder Include="API\Views\Orders\" />
+    <Folder Include="Application\Interfaces\" />
+    <Folder Include="Application\Reports\" />
+    <Folder Include="Application\Orders\" />
+    <Folder Include="Domain\Entities\" />
+    <Folder Include="Domain\Interfaces\" />
+    <Folder Include="Domain\Services\" />
+    <Folder Include="Domain\ValueObjects\" />
+    <Folder Include="Infrastructure\Data\" />
+    <Folder Include="Infrastructure\Reports\" />
+    <Folder Include="tests\" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>

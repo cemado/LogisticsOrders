@@ -1,0 +1,55 @@
+@page
+@model LogisticsOrders.API.Pages.Orders.IndexModel
+@using X.PagedList.Mvc.Core
+@using X.PagedList
+
+<h2>Órdenes</h2>
+
+<form method="get" class="mb-3">
+    <div class="row g-2">
+        <div class="col">
+            <input type="text" name="ClientName" value="@Model.ClientName" class="form-control" placeholder="Cliente" />
+        </div>
+        <div class="col">
+            <input type="text" name="Product" value="@Model.Product" class="form-control" placeholder="Producto" />
+        </div>
+        <div class="col">
+            <button type="submit" class="btn btn-primary">Buscar</button>
+        </div>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Cliente (nombre del cliente)</th>
+            <th>Fecha de creación</th>
+            <th>Total estimado (costo)</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+    @if (Model.Orders != null)
+    {
+        foreach (var order in Model.Orders)
+        {
+            <tr>
+                <td>@order.CustomerName</td>
+                <td>@order.OrderDate.ToShortDateString()</td>
+                <td>@order.Total.ToString("C")</td>
+                <td>
+                    <a asp-page="/Orders/Edit" asp-route-id="@order.Id" class="btn btn-primary btn-sm">Editar</a>
+                    <a asp-page="/Orders/Delete" asp-route-id="@order.Id" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+        }
+    }
+    </tbody>
+</table>
+
+@if (Model.Orders != null)
+{
+    <div>
+        @Html.PagedListPager(Model.Orders, pageNumber => Url.Page("Index", new { pageNumber, ClientName = Model.ClientName, Product = Model.Product }))
+    </div>
+}

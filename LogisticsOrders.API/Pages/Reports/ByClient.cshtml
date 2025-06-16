@@ -1,0 +1,48 @@
+@page
+@model LogisticsOrders.API.Pages.Reports.ByClientModel
+
+<h2>Reporte por Cliente</h2>
+<form method="get" class="mb-3">
+    <input type="text" name="ClientName" value="@Model.ClientName" placeholder="Nombre del cliente" class="form-control" />
+    <button type="submit" class="btn btn-primary mt-2">Buscar</button>
+</form>
+@if (Model.Orders != null && Model.Orders.Any())
+{
+    <form method="get">
+        <input type="hidden" name="ClientName" value="@Model.ClientName" />
+        <button type="submit" formaction="?handler=DownloadExcel" class="btn btn-success mb-2">Descargar Excel</button>
+    </form>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Cliente</th>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Origen</th>
+                <th>Destino</th>
+                <th>Distancia (km)</th>
+                <th>Costo</th>
+                <th>Fecha</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var order in Model.Orders)
+        {
+            <tr>
+                <td>@order.Client</td>
+                <td>@order.Product</td>
+                <td>@order.Quantity</td>
+                <td>@($"{order.Origin.Latitude}, {order.Origin.Longitude}")</td>
+                <td>@($"{order.Destination.Latitude}, {order.Destination.Longitude}")</td>
+                <td>@order.DistanceKm.ToString("F2")</td>
+                <td>@order.EstimatedCost.ToString("C")</td>
+                <td>@order.CreatedAt.ToString("g")</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+else if (!string.IsNullOrWhiteSpace(Model.ClientName))
+{
+    <div class="alert alert-info">No hay órdenes para el cliente buscado.</div>
+}

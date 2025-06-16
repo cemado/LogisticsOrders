@@ -1,0 +1,19 @@
+@page
+@model LogisticsOrders.API.Pages.Account.LoginModel
+
+<h2>Iniciar Sesión</h2>
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <div class="alert alert-danger">@Model.ErrorMessage</div>
+}
+<form method="post">
+    <div>
+        <label>Usuario</label>
+        <input asp-for="Username" class="form-control" />
+    </div>
+    <div>
+        <label>Contraseña</label>
+        <input asp-for="Password" type="password" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Entrar</button>
+</form>
