@@ -1,10 +1,10 @@
 ﻿# LogisticsOrders
 
 ## Descripción
-Gestión de órdenes de despacho con cálculo de distancia y costo, arquitectura limpia, Razor Pages y SQL Server.
+Gestión de órdenes de despacho con cálculo de distancia y costo, desarrollado usando clean architecture, Razor Pages y SQL Server.
 
 ## Reqisitos técnicos de la prueba
-- Arquitectura limpia, separación de capas, principios SOLID.
+- Uso de clean architecture, separación de capas, principios SOLID.
 - Cálculo de distancia con Haversine.
 - Validaciones y manejo de errores.
 - Pruebas unitarias y de integración.
@@ -12,7 +12,7 @@ Gestión de órdenes de despacho con cálculo de distancia y costo, arquitectura
 # ✅ Checklist de Validación según Requisitos
 
 ## 1. Arquitectura y Organización
-- [x] El proyecto sigue una arquitectura limpia/en capas/hexagonal.
+- [x] El proyecto sigue los patrones clean architecture/layers/hexagonal.
 - [x] El código está organizado en capas: Dominio, Aplicación, Infraestructura, Presentación.
 - [x] Se usan interfaces para la abstracción de dependencias.
 - [x] Se aplican principios SOLID y patrones de diseño (Repositorio, Servicio, Handler, etc.).
@@ -62,18 +62,18 @@ Gestión de órdenes de despacho con cálculo de distancia y costo, arquitectura
 ## 🚀 Ejemplos de uso
 
 ### Crear una orden
-1. Accede a `/Orders/Create`.
+1. Ingresa a `/Orders/Create`.
 2. Completa el formulario con cliente, producto, cantidad, origen (lat/lng) y destino (lat/lng).
 3. Haz clic en "Crear orden".
-4. Si la orden es válida, se mostrará un mensaje de éxito y la orden será almacenada.
+4. Si la orden es válida, se mostrará un mensaje de éxito y la orden se guardará.
 
 ### Consultar órdenes por cliente
-1. Accede a `/Orders/ByClient?ClientName=NombreCliente`.
-2. Visualiza el listado de órdenes filtradas por cliente.
+1. Ingresa a `/Orders/ByClient?ClientName=NombreCliente`.
+2. Muestra la lista de órdenes filtradas por cliente.
 
 ### Descargar reporte en Excel
-1. Accede a `/Reports/ByClient?ClientName=NombreCliente`.
-2. Haz clic en "Descargar Excel" para obtener el reporte de órdenes por cliente.
+1. Ingresa a `/Reports/ByClient?ClientName=NombreCliente`.
+2. Haz clic en "Descargar Excel" para descargar el reporte de órdenes por cliente.
 
 ---
 
@@ -86,7 +86,7 @@ Gestión de órdenes de despacho con cálculo de distancia y costo, arquitectura
 - **Usuario:** `mlopez`
 - **Contraseña:** `Manuel123`
 
-Asegúrate de ejecutar el script de inicialización (`scripts/init-db.sql`) en la base de datos antes de publicar la aplicación.
+Ejecuta el script de inicialización (`scripts/init-db.sql`) en la base de datos.
 
 ### 2. Configuración de la cadena de conexión
 
@@ -106,16 +106,16 @@ En `appsettings.json`:
 2. Haz clic derecho sobre el proyecto `LogisticsOrders.API` y selecciona **Publicar**.
 3. Elige **Importar perfil** y selecciona el archivo `PruebaTecnica10.PublishProfile` de la raíz del proyecto.
 4. Sigue los pasos del asistente para publicar en Azure App Service.
-5. Verifica que la aplicación esté disponible en:  
+5. Verifica que la aplicación esté desplegada en:  
    [https://pruebatecnica10.azurewebsites.net](https://pruebatecnica10.azurewebsites.net)
 
 ---
 
 ## 🏃‍♂️ Ejecución del proyecto localmente
 
-1. Ejecuta el script de base de datos:  
-   - Abre SQL Server Management Studio o Azure Data Studio.
-   - Ejecuta `scripts/init-db.sql` en la base de datos `Manuel`.
+1. Ejecuta el script de BD:  
+   - Abre SQL Server Management Studio y conectate según la informacion encontrada en `appsettings.json`.
+   - Ejecuta `scripts/init-db.sql` en la BD de nombre `Manuel`.
 
 2. Configura la cadena de conexión en `appsettings.json` como se muestra arriba.
 
@@ -136,19 +136,14 @@ En `appsettings.json`:
 ## 🧪 Ejecución de pruebas
 
 ### Pruebas unitarias
-- Abre una terminal en la raíz del proyecto.
-- Ejecuta el siguiente comando para correr las pruebas unitarias:  
+- Abre una terminal en la raíz del proyecto y ejecuta el siguiente comando para correr las pruebas unitarias:  
 ```bash
 dotnet test .\LogisticsOrders.UnitTests\LogisticsOrders.UnitTests.csproj
 ```
 ### Pruebas de integración
-- Abre una terminal en la raíz del proyecto.
-- Ejecuta el siguiente comando para correr las pruebas de integración:  
+- Abre una terminal en la raíz del proyecto y ejecuta el siguiente comando para correr las pruebas de integración:  
 ```bash
 dotnet test .\LogisticsOrders.IntegrationTests\LogisticsOrders.IntegrationTests.csproj
 ```
-
-- Las pruebas de integración simulan peticiones reales a los endpoints, incluyendo endpoints protegidos y descargas de archivos Excel.
-- Asegúrate de que la base de datos de pruebas esté configurada correctamente o usa la configuración InMemory para pruebas.
 
 ---
